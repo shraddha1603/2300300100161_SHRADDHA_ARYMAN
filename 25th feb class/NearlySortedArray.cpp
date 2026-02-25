@@ -1,22 +1,20 @@
 #include <iostream>
 using namespace std;
-int solve(int arr[],int size,int target){
+#include <vector>
+
+int SearchNearlySortedArray(int arr[],int target, int n){
     int s=0;
-    int e=size-1;
-    int mid=s+(e-2)/2;
+    int e=n-1;
     int ans=-1;
     while(s<=e){
-        if(arr[mid]==target){
-            ans=mid;
-            e=mid-1;
+        int m=int(s+(e-s)/2);
+        if(arr[m]==target) ans=m;
+        if(arr[m+1]==target) ans=m+1;
+        if(arr[m-1]==target) ans=m-1;
+        if(arr[m]>target) e=m-2;
+        else{
+            s=m+2;
         }
-        else if(target<arr[mid]){
-            e= mid-1;
-        }
-         else{
-            s=mid+1;
-        }
-        mid =s +(e-s)/2;
     }
     return ans;
 }
@@ -32,5 +30,5 @@ int main(){
     int x;
     cout << "Enter your target value: ";
     cin >> x;
-    cout << solve(arr,size,x);
+    cout << SearchNearlySortedArray(arr,x,size);
 }
