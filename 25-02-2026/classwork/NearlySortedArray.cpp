@@ -9,8 +9,8 @@ int SearchNearlySortedArray(int arr[],int target, int n){
     while(s<=e){
         int m=int(s+(e-s)/2);
         if(arr[m]==target) ans=m;
-        if(arr[m+1]==target) ans=m+1;
-        if(arr[m-1]==target) ans=m-1;
+        if(arr[m+1]==target && m+1<=e) ans=m+1;
+        if(arr[m-1]==target && m-1>=s) ans=m-1;
         if(arr[m]>target) e=m-2;
         else{
             s=m+2;

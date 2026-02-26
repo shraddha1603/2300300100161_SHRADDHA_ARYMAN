@@ -23,6 +23,5 @@ return ans;
 }
 
 int main(){
-    
     cout<<solve(37);
 }
