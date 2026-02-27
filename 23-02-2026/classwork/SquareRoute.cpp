@@ -4,7 +4,6 @@ using namespace std;
 int solve(int n){
     int s = 1;
     int e = n/2;
-   
     int ans = -1;
     while(s<=e){
         int mid = s + (e-s)/2;

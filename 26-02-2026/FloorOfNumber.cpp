@@ -1,28 +1,28 @@
+/*
+Find the Floor of a Number in a Sorted Array
+Given a sorted array and a value x, find the largest element ≤ x using Binary Search.
+*/
+
 #include <iostream>
 using namespace std;
 int solve(int arr[],int size,int target){
     int s=0;
     int e=size-1;
-    int mid=s+(e-s)/2;
-    int last =-1;
+    int ans=-1;
     while(s<=e){
-        if(arr[mid]==target){
-            last=mid;
-            s=mid+1;
-        }
-        else if(target<arr[mid]){
-            e= mid-1;
-        }
-         else{
-            s=mid+1;
-        }
-        mid =s +(e-s)/2;
+        int m=s+(e-s)/2;
+        if(arr[m]<=target) {
+            ans = arr[m];
+            s = m+1 ;
+            }
+        else e= m-1;
     }
-    return last;
+    return ans;
 }
+
 int main(){
     int size;
-    cout<< "Enter the sixe of array: ";
+    cout<< "Enter the size of array: ";
     cin>> size;
     int arr[size];
     cout<< "Enter the elements: ";
