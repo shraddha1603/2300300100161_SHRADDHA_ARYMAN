@@ -10,3 +10,24 @@ Input: head = [2,1,3,5,6,4,7]
 Output: [2,3,6,7,1,5,4]
 */
 
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if (!head || !head->next) return head;
+
+    ListNode* odd = head;
+    ListNode* even = head->next;
+    ListNode* evenHead = even;
+
+    while (even && even->next) {
+        odd->next = even->next;
+        odd = odd->next;
+
+        even->next = odd->next;
+        even = even->next;
+    }
+
+    odd->next = evenHead;
+    return head;
+    }
+};
